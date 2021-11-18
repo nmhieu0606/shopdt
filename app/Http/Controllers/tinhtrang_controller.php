@@ -36,6 +36,15 @@ class tinhtrang_controller extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'tinhtrang.required' => 'Tình trạng không được bỏ trống',
+        ];
+
+        $request->validate([
+			'tinhtrang' => 'required|string|max:255',
+
+		],$messages);
+
         $data=new tinhtrang;
         $data->tinhtrang=$request->tinhtrang;
         if($data->save()){
@@ -77,6 +86,15 @@ class tinhtrang_controller extends Controller
      */
     public function update(Request $request,  $id)
     {
+        $messages = [
+            'tinhtrang.required' => 'Tình trạng không được bỏ trống',
+        ];
+
+        $request->validate([
+			'tinhtrang' => 'required|string|max:255',
+
+		],$messages);
+        
         $data = tinhtrang::find($id);
         $data->tinhtrang=$request->tinhtrang;
         $data->save();

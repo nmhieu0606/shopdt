@@ -36,6 +36,15 @@ class nhanhieu_controller extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'nhanhieu.required' => 'Tên nhãn hiệu không được bỏ trống',
+        ];
+
+        $request->validate([
+			'nhanhieu' => 'required|string|max:100',
+
+		],$messages);
+
         $data=new nhanhieu;
         $data->nhanhieu=$request->nhanhieu;
         if($data->save()){
@@ -78,6 +87,15 @@ class nhanhieu_controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'nhanhieu.required' => 'Tên nhãn hiệu không được bỏ trống',
+        ];
+
+        $request->validate([
+			'nhanhieu' => 'required|string|max:100',
+
+		],$messages);
+        
         $data = nhanhieu::find($id);
         $data->nhanhieu=$request->nhanhieu;
         if($data->save()){

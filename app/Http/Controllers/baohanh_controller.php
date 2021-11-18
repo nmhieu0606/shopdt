@@ -36,6 +36,15 @@ class baohanh_controller extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'thoigianbaohanh.required' => 'Thời gian bảo hành không được bỏ trống',
+        ];
+
+        $request->validate([
+			'thoigianbaohanh' => 'required|string|max:100',
+
+		],$messages);
+
         $data=new baohanh;
         $data->thoigianbaohanh=$request->thoigianbaohanh;
         if($data->save()){
@@ -76,6 +85,15 @@ class baohanh_controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'thoigianbaohanh.required' => 'Thời gian bảo hành không được bỏ trống',
+        ];
+
+        $request->validate([
+			'thoigianbaohanh' => 'required|string|max:100',
+
+		],$messages);
+        
         $data = baohanh::find($id);
         $data->thoigianbaohanh=$request->thoigianbaohanh;
         if($data->save())

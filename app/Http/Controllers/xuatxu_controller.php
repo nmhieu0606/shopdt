@@ -36,6 +36,15 @@ class xuatxu_controller extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'xuatxu.required' => 'Xuất xứ không được bỏ trống',
+        ];
+
+        $request->validate([
+			'xuatxu' => 'required|string|max:255',
+
+		],$messages);
+
         $data=new xuatxu;
         $data->xuatxu=$request->xuatxu;
         if($data->save()){
@@ -75,6 +84,15 @@ class xuatxu_controller extends Controller
      */
     public function update(Request $request,$id)
     {
+        $messages = [
+            'xuatxu.required' => 'Xuất xứ không được bỏ trống',
+        ];
+
+        $request->validate([
+			'xuatxu' => 'required|string|max:255',
+
+		],$messages);
+        
         $data=xuatxu::find($id);
         $data->xuatxu=$request->xuatxu;
         if($data->save()){
