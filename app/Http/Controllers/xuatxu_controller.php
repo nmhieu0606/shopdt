@@ -14,8 +14,8 @@ class xuatxu_controller extends Controller
      */
     public function index()
     {
-        $data=xuatxu::all();
-        return view('admin.xuatxu.index',compact('data'));
+        $xuatxu=xuatxu::all();
+        return view('admin.xuatxu.index',compact('xuatxu'));
     }
 
     /**
@@ -45,11 +45,10 @@ class xuatxu_controller extends Controller
 
 		],$messages);
 
-        $data=new xuatxu;
-        $data->xuatxu=$request->xuatxu;
-        if($data->save()){
-            return redirect('admin/xuatxu');
-        }
+        $xuatxu=new xuatxu;
+        $xuatxu->xuatxu=$request->xuatxu;
+        $xuatxu->save();
+        return redirect('admin/xuatxu');
     }
 
     /**
@@ -71,8 +70,9 @@ class xuatxu_controller extends Controller
      */
     public function edit($id)
     {
-        $data=xuatxu::find($id);
-        return view('admin.xuatxu.edit',compact('data'));
+        $xuatxu=xuatxu::find($id);
+
+        return view('admin.xuatxu.edit',compact('xuatxu'));
     }
 
     /**
@@ -82,7 +82,7 @@ class xuatxu_controller extends Controller
      * @param  \App\Models\xuatxu  $xuatxu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $messages = [
             'xuatxu.required' => 'Xuất xứ không được bỏ trống',
@@ -93,12 +93,10 @@ class xuatxu_controller extends Controller
 
 		],$messages);
         
-        $data=xuatxu::find($id);
-        $data->xuatxu=$request->xuatxu;
-        if($data->save()){
-            return redirect('admin/xuatxu');
-
-        }
+        $xuatxu=xuatxu::find($id);
+        $xuatxu->xuatxu=$request->xuatxu;
+        $xuatxu->save();
+        return redirect('admin/xuatxu');
     }
 
     /**
@@ -109,9 +107,13 @@ class xuatxu_controller extends Controller
      */
     public function destroy($id)
     {
-        $data=xuatxu::find($id)->delete();
-        if($data){
-            return redirect('admin/xuatxu');
+        //
+    }
+    public function delete($id)
+    {
+        $xuatxu=xuatxu::find($id);
+        if($xuatxu->delete()){
+            return redirect()->back();
         }
     }
 }

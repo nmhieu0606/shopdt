@@ -113,6 +113,11 @@ class nhanhieu_controller extends Controller
      */
     public function destroy($id)
     {
+        //
+    }
+
+    public function delete($id)
+    {
        $data= nhanhieu::find($id)->delete();
        if( $data)
             return redirect('admin/nhanhieu');
