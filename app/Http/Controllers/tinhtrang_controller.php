@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\nhanhieu;
+use App\Models\tinhtrang;
 use Illuminate\Http\Request;
 
-class nhanhieu_controller extends Controller
+class tinhtrang_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class nhanhieu_controller extends Controller
      */
     public function index()
     {
-        $data=nhanhieu::all();
-        return view('admin.nhanhieu.index',compact('data'));
+        $data=tinhtrang::all();
+        return view('admin.tinhtrang.index',compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class nhanhieu_controller extends Controller
      */
     public function create()
     {
-        return view('admin.nhanhieu.create');
+        return view('admin.tinhtrang.create');
     }
 
     /**
@@ -36,22 +36,21 @@ class nhanhieu_controller extends Controller
      */
     public function store(Request $request)
     {
-        $data=new nhanhieu;
-        $data->nhanhieu=$request->nhanhieu;
+        $data=new tinhtrang;
+        $data->tinhtrang=$request->tinhtrang;
         if($data->save()){
-            $data=nhanhieu::all();
-            return redirect('admin/nhanhieu');
+            $data=tinhtrang::all();
+            return view('admin.tinhtrang.index',compact('data'));
         }
-        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\tinhtrang  $tinhtrang
      * @return \Illuminate\Http\Response
      */
-    public function show(nhanhieu $nhanhieu)
+    public function show(tinhtrang $tinhtrang)
     {
         //
     }
@@ -59,44 +58,40 @@ class nhanhieu_controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\tinhtrang  $tinhtrang
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = nhanhieu::find($id);
+        $data = tinhtrang::find($id);
         
-		return view('admin.nhanhieu.edit', compact('data'));
+		return view('admin.tinhtrang.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\tinhtrang  $tinhtrang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  $id)
     {
-        $data = nhanhieu::find($id);
-        $data->nhanhieu=$request->nhanhieu;
-        if($data->save()){
-            $data=nhanhieu::all();
-            return redirect('admin/nhanhieu');
-        }
-
+        $data = tinhtrang::find($id);
+        $data->tinhtrang=$request->tinhtrang;
+        $data->save();
+        return redirect('admin/tinhtrang');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\tinhtrang  $tinhtrang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-       $data= nhanhieu::find($id)->delete();
-       if( $data)
-            return redirect('admin/nhanhieu');
+        tinhtrang::find($id)->delete();
+        return redirect('admin/tinhtrang');
     }
 }

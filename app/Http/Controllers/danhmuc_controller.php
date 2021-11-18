@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\nhanhieu;
+use App\Models\danhmuc;
 use Illuminate\Http\Request;
 
-class nhanhieu_controller extends Controller
+class danhmuc_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class nhanhieu_controller extends Controller
      */
     public function index()
     {
-        $data=nhanhieu::all();
-        return view('admin.nhanhieu.index',compact('data'));
+        
+        $data=danhmuc::all();
+        return view('admin.danhmuc.index',compact('data'));
     }
 
     /**
@@ -25,7 +26,7 @@ class nhanhieu_controller extends Controller
      */
     public function create()
     {
-        return view('admin.nhanhieu.create');
+        return view('admin.danhmuc.create');
     }
 
     /**
@@ -36,22 +37,24 @@ class nhanhieu_controller extends Controller
      */
     public function store(Request $request)
     {
-        $data=new nhanhieu;
-        $data->nhanhieu=$request->nhanhieu;
+        
+        $data=new danhmuc;
+        $data->tendanhmuc=$request->tendanhmuc;
         if($data->save()){
-            $data=nhanhieu::all();
-            return redirect('admin/nhanhieu');
+            $data=danhmuc::all();
+            return view('admin.danhmuc.index',compact('data'));
         }
         
-    }
+       
+    }   
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\danhmuc  $danhmuc
      * @return \Illuminate\Http\Response
      */
-    public function show(nhanhieu $nhanhieu)
+    public function show(danhmuc $danhmuc)
     {
         //
     }
@@ -59,44 +62,43 @@ class nhanhieu_controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\danhmuc  $danhmuc
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = nhanhieu::find($id);
+        $data = danhmuc::find($id);
         
-		return view('admin.nhanhieu.edit', compact('data'));
+		return view('admin.danhmuc.edit', compact('data'));
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\danhmuc  $danhmuc
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data = nhanhieu::find($id);
-        $data->nhanhieu=$request->nhanhieu;
-        if($data->save()){
-            $data=nhanhieu::all();
-            return redirect('admin/nhanhieu');
-        }
-
+        $data = danhmuc::find($id);
+        $data->tendanhmuc=$request->tendanhmuc;
+        $data->save();
+        return redirect('admin/danhmuc');
+        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\danhmuc  $danhmuc
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       $data= nhanhieu::find($id)->delete();
-       if( $data)
-            return redirect('admin/nhanhieu');
+      danhmuc::find($id)->delete();
+      return redirect('admin/danhmuc');
+       
     }
 }

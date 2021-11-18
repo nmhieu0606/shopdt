@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\nhanhieu;
+use App\Models\baohanh;
 use Illuminate\Http\Request;
 
-class nhanhieu_controller extends Controller
+class baohanh_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class nhanhieu_controller extends Controller
      */
     public function index()
     {
-        $data=nhanhieu::all();
-        return view('admin.nhanhieu.index',compact('data'));
+        $data=baohanh::all();
+        return view('admin.baohanh.index',compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class nhanhieu_controller extends Controller
      */
     public function create()
     {
-        return view('admin.nhanhieu.create');
+        return view('admin.baohanh.create');
     }
 
     /**
@@ -36,22 +36,20 @@ class nhanhieu_controller extends Controller
      */
     public function store(Request $request)
     {
-        $data=new nhanhieu;
-        $data->nhanhieu=$request->nhanhieu;
+        $data=new baohanh;
+        $data->thoigianbaohanh=$request->thoigianbaohanh;
         if($data->save()){
-            $data=nhanhieu::all();
-            return redirect('admin/nhanhieu');
+            return redirect('admin/baohanh');
         }
-        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\baohanh  $baohanh
      * @return \Illuminate\Http\Response
      */
-    public function show(nhanhieu $nhanhieu)
+    public function show(baohanh $baohanh)
     {
         //
     }
@@ -59,44 +57,41 @@ class nhanhieu_controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\baohanh  $baohanh
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = nhanhieu::find($id);
+        $data = baohanh::find($id);
         
-		return view('admin.nhanhieu.edit', compact('data'));
+		return view('admin.baohanh.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\baohanh  $baohanh
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data = nhanhieu::find($id);
-        $data->nhanhieu=$request->nhanhieu;
-        if($data->save()){
-            $data=nhanhieu::all();
-            return redirect('admin/nhanhieu');
-        }
-
+        $data = baohanh::find($id);
+        $data->thoigianbaohanh=$request->thoigianbaohanh;
+        if($data->save())
+            return redirect('admin/baohanh');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\nhanhieu  $nhanhieu
+     * @param  \App\Models\baohanh  $baohanh
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       $data= nhanhieu::find($id)->delete();
-       if( $data)
-            return redirect('admin/nhanhieu');
+       $data= baohanh::find($id)->delete();
+       if($data)
+            return redirect('admin/baohanh');
     }
 }
