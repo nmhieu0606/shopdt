@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'home_controller@index')->name('home.index');
 Route::get('admin/login', 'admin_controller@login')->name('admin.login');
 Route::post('admin/login', 'admin_controller@postlogin')->name('admin.postlogin');
 Route::get('admin/logout', 'admin_controller@logout')->name('admin.logout');
