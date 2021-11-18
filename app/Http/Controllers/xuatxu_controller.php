@@ -14,7 +14,8 @@ class xuatxu_controller extends Controller
      */
     public function index()
     {
-        //
+        $data=xuatxu::all();
+        return view('admin.xuatxu.index',compact('data'));
     }
 
     /**
@@ -24,7 +25,7 @@ class xuatxu_controller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.xuatxu.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class xuatxu_controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=new xuatxu;
+        $data->xuatxu=$request->xuatxu;
+        if($data->save()){
+            return redirect('admin/xuatxu');
+        }
     }
 
     /**
@@ -55,9 +60,10 @@ class xuatxu_controller extends Controller
      * @param  \App\Models\xuatxu  $xuatxu
      * @return \Illuminate\Http\Response
      */
-    public function edit(xuatxu $xuatxu)
+    public function edit($id)
     {
-        //
+        $data=xuatxu::find($id);
+        return view('admin.xuatxu.edit',compact('data'));
     }
 
     /**
@@ -67,9 +73,14 @@ class xuatxu_controller extends Controller
      * @param  \App\Models\xuatxu  $xuatxu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, xuatxu $xuatxu)
+    public function update(Request $request,$id)
     {
-        //
+        $data=xuatxu::find($id);
+        $data->xuatxu=$request->xuatxu;
+        if($data->save()){
+            return redirect('admin/xuatxu');
+
+        }
     }
 
     /**
@@ -78,8 +89,11 @@ class xuatxu_controller extends Controller
      * @param  \App\Models\xuatxu  $xuatxu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(xuatxu $xuatxu)
+    public function destroy($id)
     {
-        //
+        $data=xuatxu::find($id)->delete();
+        if($data){
+            return redirect('admin/xuatxu');
+        }
     }
 }
