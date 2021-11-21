@@ -2,6 +2,11 @@
 
 return [
     [
+        'label'=>'Đăng xuất',
+        'route'=>'admin.logout',
+        'icon'=>'fa-home'
+    ],
+    [
         'label'=>'Home',
         'icon'=>'fa-house-user',
         'route'=>'admin.index',
@@ -24,7 +29,21 @@ return [
                 'route'=>'xuatxu.index',
 
             ],
+            
+            [
+                'label'=>'Nhân viên',
+                'route'=>'nhanvien.index',
+                'icon'=>'fa-certificate'
+            ],
+
+            [
+                'label'=>'Chức vụ',
+                'route'=>'chucvu.index',
+                'icon'=>'fa-certificate'
+            ]
+
         ]
+        
 
     ],
     
