@@ -19,7 +19,12 @@ Route::get('admin/logout', 'admin_controller@logout')->name('admin.logout');
 
 Route::group(['prefix'=>'admin', 'middleware'=>'admin_middleware'], function () {
     
+    
     Route::get('/','admin_controller@index')->name('admin.index');
+
+    Route::get('/xuatxu/detele/{id}','xuatxu_controller@delete')->name('xuatxu.delete');
+    Route::get('/nhanhieu/detele/{id}','nhanhieu_controller@delete')->name('nhanhieu.delete');
+
     Route::get('/nhanvien/delete{id}','nhanvien_controller@delete')->name('nhanvien.delete');
     Route::get('/chucvu/delete{id}','chucvu_controller@delete')->name('chucvu.delete');
 

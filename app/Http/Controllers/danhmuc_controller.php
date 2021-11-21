@@ -37,7 +37,15 @@ class danhmuc_controller extends Controller
      */
     public function store(Request $request)
     {
-        
+        $messages = [
+            'tendanhmuc.required' => 'Tên danh mục không được bỏ trống',
+        ];
+
+        $request->validate([
+			'tendanhmuc' => 'required|string|max:255',
+
+		],$messages);
+
         $data=new danhmuc;
         $data->tendanhmuc=$request->tendanhmuc;
         if($data->save()){
@@ -82,6 +90,15 @@ class danhmuc_controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'tendanhmuc.required' => 'Tên danh mục không được bỏ trống',
+        ];
+
+        $request->validate([
+			'tendanhmuc' => 'required|string|max:255',
+
+		],$messages);
+        
         $data = danhmuc::find($id);
         $data->tendanhmuc=$request->tendanhmuc;
         $data->save();
