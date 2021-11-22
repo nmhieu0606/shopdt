@@ -44,8 +44,17 @@ return [
 
         ]
         
+        
 
     ],
+
+    [
+        'label'=>'Khách hàng',
+        'route'=>'khachhang.index',
+        'icon'=>'fa-house-user'
+    ]
+
+   
     
 
 ];
