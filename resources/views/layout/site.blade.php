@@ -45,10 +45,17 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
                         <span class="ion-android-menu"></span>
                     </button>
+
+
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <ul class="navbar-nav">
-                            <li><a class="nav-link nav_item" href="index.html">Trang chủ</a></li>
-                            <li><a class="nav-link nav_item" href="contact.html">Đăng nhập</a></li>
+                            <li><a class="nav-link nav_item" href="/shopdt">Trang chủ</a></li>
+                            @if(!Auth::guard('khachhang')->user())
+                            <li><a class="nav-link nav_item" href="{{route('client.login')}}">Đăng nhập</a></li>
+                            @else
+                            <li><a class="nav-link nav_item"><i class="far fa-user"></i> {{Auth::guard('khachhang')->user()->hovaten}}</a></li>
+                            <li><a class="nav-link nav_item" href="{{route('client.logout')}}">Đăng xuất</a></li>
+                            @endif 
                         </ul>
                     </div>
                     <ul class="navbar-nav attr-nav align-items-center">
@@ -90,7 +97,7 @@
     </header>
     
 	
-	
+	@yield('main')
 	
 	
     <footer class="footer_dark">

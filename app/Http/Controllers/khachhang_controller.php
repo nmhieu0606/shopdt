@@ -36,17 +36,32 @@ class khachhang_controller extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'hovaten.required' => 'Họ và tên không được bỏ trống',
+            'gioitinh.required' => 'Giới tính không được bỏ trống',
+            'sdt.required' => 'Số điện thoại không được bỏ trống',
+            'cmnd.required' => 'Chứng minh không được bỏ trống',
+            'ngaysinh.required' => 'Ngày sinh không được bỏ trống',
+            'diachi.required' => 'Địa chỉ không được bỏ trống',
+            'email.required' => 'email không được bỏ trống',
+            'tendangnhap.required' => 'Tên đăng nhập không được bỏ trống',
+            'password.required' => 'Password không được bỏ trống',
+            
+        ];
+
+
         $request->validate([
-            'hovaten'=>'required|max:100|unique:khachhang',
+            'hovaten'=>'required|max:100',
             'gioitinh'=>'required|numeric',
             'sdt'=>'required|numeric',
             'cmnd'=>'required|numeric',
+            'ngaysinh'=>'required',
             'diachi'=>'required|max:100',
-            'email'=>'required|max:100|unique:khachhang',
-            'tendangnhap'=>'required|max:100|unique:khachhang',
-            'password'=>'required|max:100|unique:khachhang',
+            'email'=>'required|max:100',
+            'tendangnhap'=>'required|max:100',
+            'password'=>'required|max:100',
             
-        ]);
+        ],$messages);
         
         $client=new khachhang;
         $client->hovaten=$request->hovaten;
@@ -99,6 +114,20 @@ class khachhang_controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'hovaten.required' => 'Họ và tên không được bỏ trống',
+            'gioitinh.required' => 'Giới tính không được bỏ trống',
+            'sdt.required' => 'Số điện thoại không được bỏ trống',
+            'cmnd.required' => 'Chứng minh không được bỏ trống',
+            'ngaysinh.required' => 'Ngày sinh không được bỏ trống',
+            'diachi.required' => 'Địa chỉ không được bỏ trống',
+            'email.required' => 'email không được bỏ trống',
+            'tendangnhap.required' => 'Tên đăng nhập không được bỏ trống',
+            'password.required' => 'Password không được bỏ trống',
+            
+        ];
+
+
         $request->validate([
             'hovaten'=>'required|max:100',
             'gioitinh'=>'required|numeric',
@@ -109,7 +138,7 @@ class khachhang_controller extends Controller
             'tendangnhap'=>'required|max:100',
             'password'=>'required|max:100',
             
-        ]);
+        ],$messages);
 
         $client = khachhang::find($id);
         $client->hovaten=$request->hovaten;
