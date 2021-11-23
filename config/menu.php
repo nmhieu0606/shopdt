@@ -29,6 +29,26 @@ return [
                 'route'=>'xuatxu.index',
 
             ],
+
+            [
+                'label'=>'Danh mục',
+                'icon'=>'fa-house-user',
+                'route'=>'danhmuc.index',
+
+            ],
+            [
+                'label'=>'Bảo hành',
+                'icon'=>'fa-house-user',
+                'route'=>'baohanh.index',
+
+            ],
+            [
+                'label'=>'Tình trạng',
+                'icon'=>'fa-house-user',
+                'route'=>'tinhtrang.index',
+
+            ],
+=======
             
             [
                 'label'=>'Nhân viên',
@@ -41,6 +61,7 @@ return [
                 'route'=>'chucvu.index',
                 'icon'=>'fa-certificate'
             ]
+
 
         ]
         

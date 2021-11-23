@@ -31,6 +31,18 @@ Route::group(['prefix'=>'admin', 'middleware'=>'admin_middleware'], function () 
     Route::get('/xuatxu/detele/{id}','xuatxu_controller@delete')->name('xuatxu.delete');
     Route::get('/nhanhieu/detele/{id}','nhanhieu_controller@delete')->name('nhanhieu.delete');
 
+    Route::get('/danhmuc/detele/{id}','danhmuc_controller@delete')->name('danhmuc.delete');
+    Route::get('/baohanh/detele/{id}','baohanh_controller@delete')->name('baohanh.delete');
+    Route::get('/tinhtrang/detele/{id}','tinhtrang_controller@delete')->name('tinhtrang.delete');
+    
+    Route::resources([
+        'nhanhieu' =>'nhanhieu_controller',
+        'xuatxu' =>'xuatxu_controller',
+        'danhmuc' =>'danhmuc_controller',
+        'baohanh' =>'baohanh_controller',
+        'tinhtrang' =>'tinhtrang_controller',
+
+
     Route::get('/nhanvien/delete{id}','nhanvien_controller@delete')->name('nhanvien.delete');
     Route::get('/chucvu/delete{id}','chucvu_controller@delete')->name('chucvu.delete');
     Route::get('/khachhang/delete{id}','khachhang_controller@delete')->name('khachhang.delete');
@@ -41,6 +53,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'admin_middleware'], function () 
         'nhanvien' =>'nhanvien_controller',
         'chucvu' =>'chucvu_controller',
         'khachhang' =>'khachhang_controller',
+
     ]);
 
 
