@@ -48,7 +48,6 @@ return [
                 'route'=>'tinhtrang.index',
 
             ],
-=======
             
             [
                 'label'=>'Nhân viên',

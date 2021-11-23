@@ -71,7 +71,7 @@ class khachhang_controller extends Controller
      * @param  \App\Models\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(client $client)
+    public function show()
     {
         //
     }

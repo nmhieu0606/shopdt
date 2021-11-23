@@ -88,7 +88,7 @@
             </div>
         </div>
     </header>
-    
+    @yield('main')
 	
 	
 	

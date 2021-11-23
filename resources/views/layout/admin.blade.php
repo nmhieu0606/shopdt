@@ -75,13 +75,13 @@ $menu=config('menu');
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{url('public/uploads')}}/{{Auth::user()->anh}}" class="img-circle elevation-2" alt="User Image">
-        </div>
+       <img src="{{url('public/uploads')}}/{{Auth::user()->anh}}" class="img-circle elevation-2" alt="User Image">
+      </div>
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->hovaten}}</a>
         </div>
       </div>
-
+    
       <!-- SidebarSearch Form -->
      
 
