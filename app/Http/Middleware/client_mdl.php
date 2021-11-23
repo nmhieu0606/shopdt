@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
+use Auth;
 class client_mdl
 {
     /**
@@ -21,5 +21,6 @@ class client_mdl
         }
         else
             return redirect('/login');
+
     }
 }
