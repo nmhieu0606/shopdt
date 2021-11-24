@@ -72,6 +72,11 @@ return [
         'label'=>'Khách hàng',
         'route'=>'khachhang.index',
         'icon'=>'fa-house-user'
+    ],
+    [
+        'label'=>'Sản phẩm',
+        'route'=>'sanpham.index',
+        'icon'=>'fas fa-align-justify'
     ]
 
    

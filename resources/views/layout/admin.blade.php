@@ -189,5 +189,8 @@ $menu=config('menu');
 <script src="{{url('public/adminlte')}}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('public/adminlte')}}/dist/js/demo.js"></script>
+<!--Ck-->
+<script src="//cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+
 </body>
 </html>

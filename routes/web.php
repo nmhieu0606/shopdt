@@ -36,6 +36,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'admin_middleware'], function () 
     Route::get('/nhanvien/delete{id}','nhanvien_controller@delete')->name('nhanvien.delete');
     Route::get('/chucvu/delete{id}','chucvu_controller@delete')->name('chucvu.delete');
     Route::get('/khachhang/delete{id}','khachhang_controller@delete')->name('khachhang.delete');
+    Route::get('/sanpham/delete{id}','sanpham_controller@delete')->name('sanpham.delete');
     Route::resources([
         'nhanhieu' =>'nhanhieu_controller',
         'xuatxu' =>'xuatxu_controller',
@@ -45,6 +46,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'admin_middleware'], function () 
         'nhanvien' =>'nhanvien_controller',
         'chucvu' =>'chucvu_controller',
         'khachhang' =>'khachhang_controller',
+        'sanpham'   =>'sanpham_controller',
     ]);
 
 
