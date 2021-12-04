@@ -27,13 +27,6 @@
     <link rel="stylesheet" href="{{url('public/shopwise')}}/assets/css/responsive.css" />
 </head>
 <body>
-    <div class="preloader">
-        <div class="lds-ellipsis">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
     <header class="header_wrap fixed-top header_with_topbar">
         <div class="bottom_header dark_skin main_menu_uppercase">
             <div class="container">
@@ -70,23 +63,20 @@
                             </div><div class="search_overlay"></div>
                         </li>
                         <li class="dropdown cart_dropdown">
-                            <a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">2</span></a>
+                            <a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">{{$card->quantity}}</span></a>
                             <div class="cart_box dropdown-menu dropdown-menu-right">
                                 <ul class="cart_list">
+                                    @foreach ($card->items as $item)
                                     <li>
                                         <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                        <a href="#"><img src="{{url('public/shopwise')}}/assets/images/cart_thamb1.jpg" alt="cart_thumb1">Variable product 001</a>
-                                        <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>78.00</span>
+                                        <a href="#"><img src="{{url('public/uploads/')}}{{$item['anh']}}" alt="cart_thumb1">{{$item['tensp']}}</a>
+                                        <span class="cart_quantity"> {{$item['quantity']}} x <span class="cart_amount"> <span class="price_symbole">$</span></span>{{$item['price']}}</span>
                                     </li>
-                                    <li>
-                                        <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                        <a href="#"><img src="{{url('public/shopwise')}}/assets/images/cart_thamb2.jpg" alt="cart_thumb2">Ornare sed consequat</a>
-                                        <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>81.00</span>
-                                    </li>
+                                    @endforeach
                                 </ul>
                                 <div class="cart_footer">
-                                    <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>159.00</p>
-                                    <p class="cart_buttons"><a href="#" class="btn btn-fill-line view-cart">View Cart</a><a href="#" class="btn btn-fill-out checkout">Checkout</a></p>
+                                    <p class="cart_total"><strong>Tổng tiền:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>{{$card->price}}</p>
+                                    <p class="cart_buttons"><a href="{{route('shopcard.index')}}" class="btn btn-fill-line view-cart">Xem giỏ hàng</a></p>
                                 </div>
                             </div>
                         </li>
@@ -95,7 +85,22 @@
             </div>
         </div>
     </header>
-    @yield('main')
+    <div class="container">
+        @if(Session::has('yes'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{Session::get('yes')}} 
+
+        </div>
+        @endif
+        @if(Session::has('no'))
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{Session::get('no')}} 
+        </div>
+        @endif
+    </div>
+    
 	
 	@yield('main')
 	
