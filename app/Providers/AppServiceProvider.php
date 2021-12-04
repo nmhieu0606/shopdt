@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\sanpham;
+use App\Http\Helper\shopcard;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +24,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Paginator::useBootstrap();
+        view()->composer('*',function($view){
+            $view->with([
+                //'danhmuc'=>danhmuc::search()->paginate(10),
+               // 'giohang'=>new giohang(),
+                //'sp'=>sanpham::search()->paginate(10),
+                'sp'=>sanpham::orderBy('id','DESC')->paginate(10),
+                'card'=>new shopcard(),
+                //'nv'=>nhanvien::all() 
+            ]);
+
+        });
     }
 }

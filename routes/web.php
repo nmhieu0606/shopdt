@@ -18,6 +18,15 @@ Route::get('/login', 'client_controller@login')->name('client.login');
 Route::post('/login', 'client_controller@postlogin')->name('client.postlogin');
 Route::get('/logout', 'client_controller@logout')->name('client.logout');
 
+Route::get('/shopcard', 'shopcard_controller@index')->name('shopcard.index');
+Route::get('/shopcard/add/{id}', 'shopcard_controller@addcard')->name('shopcard.add');
+Route::get('/shopcard/up/{id}', 'shopcard_controller@up')->name('shopcard.up');
+Route::get('/shopcard/down/{id}', 'shopcard_controller@down')->name('shopcard.down');
+Route::get('/shopcard/delete/{id}', 'shopcard_controller@delete')->name('shopcard.delete');
+Route::get('/shopcard/deleteall', 'shopcard_controller@delete_all')->name('shopcard.deleteall');
+Route::get('/order', 'dathang_controller@index')->name('order.index');
+Route::post('/order/add', 'dathang_controller@add')->name('order.add');
+
 Route::get('/', 'home_controller@index')->name('home.index');
 Route::get('admin/login', 'admin_controller@login')->name('admin.login');
 Route::post('admin/login', 'admin_controller@postlogin')->name('admin.postlogin');
