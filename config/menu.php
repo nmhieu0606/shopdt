@@ -77,7 +77,13 @@ return [
         'label'=>'Sản phẩm',
         'route'=>'sanpham.index',
         'icon'=>'fas fa-align-justify'
+    ],
+    [
+        'label'=>'Đơn hàng',
+        'route'=>'order.index',
+        'icon'=>'fas fa-align-justify'
     ]
+
 
    
     

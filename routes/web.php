@@ -46,6 +46,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>'admin_middleware'], function () 
     Route::get('/chucvu/delete{id}','chucvu_controller@delete')->name('chucvu.delete');
     Route::get('/khachhang/delete{id}','khachhang_controller@delete')->name('khachhang.delete');
     Route::get('/sanpham/delete{id}','sanpham_controller@delete')->name('sanpham.delete');
+
+    Route::get('/order','order_controller@index')->name('order.index');
+    Route::get('/orderdetail/{id}','order_controller@orderdetail')->name('order.orderdetail');
+    Route::get('/order/delete/{id}','order_controller@delete')->name('order.delete');
+    Route::get('/order/update/{id}/{nv}','order_controller@update')->name('order.update');
     Route::resources([
         'nhanhieu' =>'nhanhieu_controller',
         'xuatxu' =>'xuatxu_controller',
