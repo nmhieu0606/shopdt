@@ -49,8 +49,6 @@
       </select>
     </div>
 
-   
-
      <div class="mb-3">
       <label for="baohanh_id">Bảo hành<span class="text-danger font-weight-bold">*</span></label>
       <select id="baohanh_id" class="form-control custom-select @error('baohanh_id') is-invalid @enderror" name="baohanh_id" required autofocus>
