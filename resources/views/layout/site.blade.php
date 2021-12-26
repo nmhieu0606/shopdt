@@ -45,6 +45,7 @@
                             <li><a class="nav-link nav_item" href="/shopdt">Trang chủ</a></li>
                             @if(!Auth::guard('khachhang')->user())
                             <li><a class="nav-link nav_item" href="{{route('client.login')}}">Đăng nhập</a></li>
+                            <li><a style="color: black;" class="nav-link nav_item" href="{{route('home.getdangky')}}">Đăng Ký</a></li>
                             @else
                             <li><a class="nav-link nav_item"><i class="far fa-user"></i> {{Auth::guard('khachhang')->user()->hovaten}}</a></li>
                             <li><a class="nav-link nav_item" href="{{route('client.logout')}}">Đăng xuất</a></li>

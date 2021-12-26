@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'client_controller@index')->name('client.index');
+Route::get('/dropdown','home_controller@dropdown')->name('home.dropdown');
+Route::get('/dangky/index','home_controller@getdangky')->name('home.getdangky');
+Route::post('/dangky/index','home_controller@postdangky')->name('home.postdangky');
+Route::get('/dangky/kichhoat/{khachhang}/{token}','home_controller@kichhoat')->name('home.kichhoat');
+Route::get('/dangnhap/index','home_controller@get_dangnhap')->name('home.getdangnhap');
+
 Route::get('/login', 'client_controller@login')->name('client.login');
 Route::post('/login', 'client_controller@postlogin')->name('client.postlogin');
 Route::get('/logout', 'client_controller@logout')->name('client.logout');
