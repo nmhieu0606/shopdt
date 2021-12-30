@@ -4,7 +4,7 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                @foreach ($sp as $item)
+                @foreach ($sanpham as $item)
                 @if ($item->soluong>0)
                 <div class="col-4">
                     <div class="row shop_container list">

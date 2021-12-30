@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Hash;
 class home_controller extends Controller
 {
     public function index(){
-        return view('site.home');
+        $sanpham=sanpham::all();
+        return view('site.home',compact('sanpham'));
     }
     public function get_dangnhap(){
         return view('client.login');

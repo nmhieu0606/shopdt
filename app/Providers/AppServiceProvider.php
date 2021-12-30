@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
                 //'danhmuc'=>danhmuc::search()->paginate(10),
                // 'giohang'=>new giohang(),
                 //'sp'=>sanpham::search()->paginate(10),
-                'sp'=>sanpham::orderBy('id','DESC')->paginate(10),
+                //'sp'=>sanpham::orderBy('id','DESC')->paginate(10),
                 'card'=>new shopcard(),
                 //'nv'=>nhanvien::all() 
             ]);

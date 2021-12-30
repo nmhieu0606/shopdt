@@ -127,12 +127,12 @@ class sanpham_controller extends Controller
      */
     public function edit($id)
     {
-        $nhanhieu=nhanhieu::all();
-        $xuatxu=xuatxu::all();
-        $baohanh=baohanh::all();
-        $danhmuc=danhmuc::all();
+        $nh=nhanhieu::all();
+        $xx=xuatxu::all();
+        $bh=baohanh::all();
+        $dm=danhmuc::all();
         $sp=sanpham::find($id);
-        return view('admin.sanpham.edit',compact('sp','nhanhieu','xuatxu','baohanh','danhmuc'));
+        return view('admin.sanpham.edit',compact('sp','nh','xx','bh','dm'));
     }
 
     /**
@@ -144,45 +144,42 @@ class sanpham_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        // $messages = [
-        //     'tensp.required' => 'Tên sản phẩm không được bỏ trống',
-        //     'tensp.unique' => 'Tên sản phẩm đã tồn tại', 
-        //     'gianhap.required' => 'Chưa nhập giá nhập',
-        //     'gianhap.numeric' => 'Không được nhập chữ',  
-        //     'giaxuat.required' => 'Chưa nhập giá bán',       
-        //     'giaxuat.numeric' => 'Không được nhập chữ',
-        //     'soluong.numeric' => 'Không được nhập chữ',
-        //     'soluong.required' => 'Chưa nhập số lượng',
+        $messages = [
+            'tensp.required' => 'Tên sản phẩm không được bỏ trống',
+            'soluong.required'=>'Số lượng sản phẩm không được bỏ trống',
+            'soluong.numeric'=>'Không được nhập số',
+            'gianhap.required'=>'Giá nhập không được bỏ trống không được bỏ trống',
+            'gianhap.numeric'=>'Không được nhập số',
+            'giaxuat.required'=>'Giá bán không được bỏ trống không được bỏ trống',
+            'giaxuat.numeric'=>'Không được nhập số',
+            'chitiet.required'=>'Chi tiết không được bỏ trống',
             
-        //  ];
 
-        //  $request->validate([
-		// 	'tensp'=>'required|max:100|',
-		// 	'gianhap' => 'required|numeric',
-        //     'giaxuat' => 'required|numeric',
-        //     'soluong' => 'required|numeric',
+         ];
+
+        $request->validate([
+            'tensp' => 'required|',
+            'gianhap' => 'required|numeric',
+            'giaxuat' => 'required|numeric',
+            'soluong' => 'required|numeric',
+            'anh' => 'image|max:2048',
             
-			
-		// ],$messages);
+            
+        ], $messages);
 
-   
+		
+        $sp=sanpham::find($id);
+        $sp->tensp=$request->tensp;
+        $sp->anh=$request->anh;
+        $sp->soluong = $request->soluong;
+        $sp->gianhap = $request->gianhap;
+        $sp->giaxuat = $request->giaxuat;
+        $sp->nhanhieu_id = $request->nhanhieu_id;
+        $sp->xuatxu_id = $request->xuatxu_id;
+        $sp->danhmuc_id = $request->danhmuc_id;
+        $sp->baohanh_id = $request->baohanh_id;
+        $sp->chitiet= $request->chitiet;
 
-        // $sp=sanpham::find($id);
-        // $sp->tensp = $request->tensp;
-        // $sp->anh = $request->anh;
-        // $sp->soluong = $request->soluong;
-        // $sp->gianhap = $request->gianhap;
-        // $sp->giaxuat = $request->giaxuat;
-        // $sp->nhanhieu_id = $request->nhanhieu_id;
-        // $sp->xuatxu_id = $request->xuatxu_id;
-        // $sp->baohanh_id = $request->baohanh_id;
-        // $sp->danhmuc_id = $request->danhmuc_id;
-        // $sp->chitiet = $request->chitiet;
-
-        
-
-       
         if($request->has('file')){
             $file=$request->file;
             $ex=$request->file->extension();
@@ -191,12 +188,13 @@ class sanpham_controller extends Controller
 
             $sanpham=sanpham::find($id);
             $request->merge(['anh'=>$file_name]);
+            $sp->anh=$request->anh;    
+
+        if($sp->save()) {
+           return redirect('admin/sanpham');
         }
-        
-        if(sanpham::find($id)->update($request->all())){
-            return redirect('admin/sanpham');
-        }
-        
+
+     }
     }
 
     /**
